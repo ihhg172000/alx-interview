@@ -5,19 +5,17 @@
 import sys
 import re
 
-
-def print_statistics(total_file_size: int, stats: dict) -> None:
-    """
-    Prints statistics.
-    """
-    print(f"File size: {total_file_size}")
-
-    for k, v in stats.items():
-        if v > 0:
-            print(f"{k}: {v}")
-
-
 if __name__ == "__main__":
+    def print_statistics(total_file_size: int, stats: dict) -> None:
+        """
+        Prints statistics.
+        """
+        print(f"File size: {total_file_size}")
+
+        for k, v in stats.items():
+            if v > 0:
+                print(f"{k}: {v}")
+
     p = r'^(\S+) - \[(.*?)\] "GET \/projects\/260 HTTP\/1\.1" (\d+) (\d+)'
 
     total_file_size = 0
