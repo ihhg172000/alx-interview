@@ -27,7 +27,7 @@ def print_statistics():
             print(f"{k}: {v}")
 
 
-def signal_handler(sig, frame):
+def  keyboard_interruption_handler(s, f):
     """
     Ctrl-C handler.
     """
@@ -35,7 +35,7 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 
-signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGINT, keyboard_interruption_handler)
 
 if __name__ == "__main__":
     for line in sys.stdin:
@@ -48,6 +48,9 @@ if __name__ == "__main__":
             status_code = match.group(3)
             file_size = match.group(4)
 
-            stats[status_code] += 1
+            if status_code in stats.keys():
+                stats[status_code] += 1
+
             total_file_size += int(file_size)
-            line_count += 1
+
+        line_count += 1
