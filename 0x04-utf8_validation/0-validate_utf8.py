@@ -10,7 +10,9 @@ def validUTF8(data):
     """
     in_sequence = 0
 
-    for byte in data:
+    for number in data:
+        byte = number & 0b11111111
+
         if not in_sequence:
             if byte >> 7 == 0b00000000:
                 continue
